@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>มีความลับจะบอก...</title>
+    <title>ของขวัญปีใหม่จ้า</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
+        /* ธีมสดใส น่ารัก */
         body {
             font-family: 'Kanit', sans-serif;
-            background-color: #202124;
-            color: #e8eaed;
+            /* พื้นหลัง Gradient พาสเทล */
+            background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+            color: #555;
             height: 100vh;
             margin: 0;
             display: flex;
@@ -21,29 +23,38 @@
             overflow: hidden;
             user-select: none;
             -webkit-user-select: none;
-            touch-action: none; /* สำคัญสำหรับ Android */
+            touch-action: none;
+            /* เพิ่มลวดลายจุดเล็กๆ */
+            background-image: radial-gradient(#ff9a9e 1px, transparent 1px), radial-gradient(#fad0c4 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
         }
 
         /* การ์ดหลัก */
         .secret-card {
             opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 0.2s, transform 0.2s;
+            transform: scale(0.95) translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             pointer-events: none;
             position: absolute;
-            z-index: 2;
+            z-index: 10; /* อยู่บนสุด */
             width: 85%;
             max-width: 400px;
-            height: 65vh; /* พื้นที่แสดงข้อความ */
-            background: #303134;
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            height: 65vh;
+            /* พื้นหลังการ์ดสีครีม */
+            background: #fffaf0;
+            border-radius: 30px;
+            /* เงาสีชมพูฟุ้งๆ */
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.4);
+            border: 3px solid #ffd1dc; /* ขอบสีชมพูอ่อน */
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden; 
+            overflow: hidden;
+            /* ตกแต่งมุมการ์ด */
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffd1dc' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         /* หน้าต่างสำหรับมองข้อความเลื่อน */
@@ -52,139 +63,166 @@
             height: 100%;
             position: relative;
             overflow: hidden;
-            /* ไล่สีจางๆ หัวท้าย */
-            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            /* ไล่สีจางๆ หัวท้าย (สีขาวเพื่อให้เข้ากับพื้นหลังการ์ด) */
+            mask-image: linear-gradient(to bottom, transparent 0%, white 15%, white 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, white 15%, white 85%, transparent 100%);
         }
 
-        /* กล่องข้อความที่จะวิ่ง */
         .scroll-content {
             position: absolute;
             width: 100%;
-            top: 100%; /* เริ่มต้นซ่อนอยู่ข้างล่าง */
+            top: 100%;
             padding-bottom: 50px;
         }
 
-        /* อนิเมชั่นเลื่อนขึ้น */
+        /* อนิเมชั่นเลื่อนขึ้น (ปรับความเร็วตรงนี้ 25s) */
         .animating {
-            /* 20s คือความเร็ว (เลขเยอะ = ช้า, เลขน้อย = เร็ว) */
-            animation: scrollUp 20s linear infinite; 
+            animation: scrollUp 25s linear infinite; 
         }
 
         @keyframes scrollUp {
             0% { top: 100%; }
-            100% { top: -200%; } /* วิ่งทะลุขึ้นไปข้างบน */
+            100% { top: -250%; }
         }
 
+        /* หัวข้อสีชมพูเข้ม */
         .secret-card h1 {
-            color: #8ab4f8; 
-            margin: 0 0 20px 0;
-            font-size: 26px;
+            color: #ff6b81; 
+            margin: 10px 0 20px 0;
+            font-size: 28px;
             font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         
+        /* เนื้อหาสีน้ำตาลอ่อน อ่านสบายตา */
         .secret-card p {
-            color: #e8eaed;
+            color: #7a615a;
             line-height: 1.8;
             font-size: 18px;
             margin-bottom: 30px;
+            font-weight: 400;
         }
 
         .secret-card img {
-            width: 80%;
-            border-radius: 12px;
+            width: 85%;
+            border-radius: 15px;
             margin-bottom: 20px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* ปุ่มกดค้าง */
+        /* ปุ่มกดค้าง Theme น่ารัก */
         .hold-btn {
-            width: 120px;
-            height: 120px;
-            background-color: #8ab4f8;
-            color: #202124;
+            width: 110px;
+            height: 110px;
+            /* สีปุ่มชมพูสดใส */
+            background: linear-gradient(to top right, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            color: white;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
-            z-index: 10;
-            transition: transform 0.1s;
+            z-index: 20; /* อยู่เหนือการ์ด */
+            transition: all 0.2s ease;
             position: absolute;
             bottom: 8%; 
-            box-shadow: 0 4px 15px rgba(138, 180, 248, 0.4);
-            border: 4px solid #202124; /* ขอบดำตัดกับปุ่ม */
+            box-shadow: 0 8px 20px rgba(255, 126, 179, 0.5);
+            border: 4px solid white;
         }
-
+        
+        /* เอฟเฟกต์ตอนกดปุ่ม */
         .hold-btn:active {
-            transform: scale(0.95);
-            background-color: #a6c8ff;
+            transform: scale(0.9);
+            box-shadow: 0 4px 10px rgba(255, 126, 179, 0.5);
+            background: #ff7eb3;
         }
 
-        /* Layer ดำบังหน้าจอ */
+        /* Layer บังหน้าจอ (ใช้สีเดียวกับพื้นหลัง) */
         .privacy-cover {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #202124;
-            z-index: 1;
+            /* ใช้สีเดียวกับ body */
+            background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+            z-index: 5;
             pointer-events: none;
-            transition: opacity 0.2s;
+            transition: opacity 0.3s ease;
         }
 
         .hint-text {
             position: absolute;
             bottom: 4%;
-            color: #5f6368;
+            color: #ff9a9e;
+            font-weight: bold;
             font-size: 14px;
+            text-shadow: 1px 1px white;
+            z-index: 20;
+        }
+        
+        /* เพิ่มไอคอนตกแต่งลอยๆ */
+        .floating-icon {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite;
+            z-index: 1;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
     </style>
 </head>
 <body oncontextmenu="return false">
 
+    <div class="floating-icon" style="top: 10%; left: 10%;">✨</div>
+    <div class="floating-icon" style="top: 20%; right: 15%; animation-delay: 1s;">🎉</div>
+    <div class="floating-icon" style="bottom: 30%; left: 20%; animation-delay: 2s;">🎀</div>
+    <div class="floating-icon" style="bottom: 15%; right: 10%; animation-delay: 0.5s;">🌸</div>
+
     <div class="secret-card" id="secretContent">
         <div class="scroll-window">
             <div class="scroll-content" id="scrollText">
                 
-                <div style="font-size: 40px; margin-bottom: 10px;">🎆</div>
+                <div style="font-size: 50px; margin-bottom: 0px;">🎁</div>
                 
-                <h1>Happy New Year 2026</h1>
+                <h1>Happy New Year 2026!</h1>
                 
                 <p>
-                    ถึง... (ชื่อน้อง)<br><br>
+                    ถึงเจ้าตัวเล็กของพี่ 💖<br><br>
                     
-                    ปีใหม่นี้ขอให้มีความสุขมากๆ นะ<br>
-                    ขอให้เป็นปีที่ใจดีกับเธอ<br>
-                    เจอแต่เรื่องยิ้มๆ ทุกวัน<br>
-                    งานการราบรื่น ไม่มีสะดุด<br>
-                    ลูกค้าโอนไว เจ้านายเอ็นดู<br><br>
+                    สวัสดีปีใหม่นะจ๊ะ!<br>
+                    ปีนี้ขอให้เป็นปีที่สดใสเหมือนรอยยิ้มหนูนะ<br>
+                    เจอแต่เรื่องราวน่ารักๆ<br>
+                    โลกใจดีกับหนูมากๆ นะรู้ไหม<br><br>
 
-                    รู้ว่าปีที่ผ่านมาเหนื่อยมาก<br>
-                    เก่งมากแล้วนะที่ผ่านมันมาได้<br>
-                    ปีหน้าเอาใหม่ ลุยไปด้วยกัน<br>
-                    มีอะไรก็หันมา...<br>
-                    เลี้ยงข้าวพี่ด้วย (หยอกๆ)<br><br>
-
-                    สุขภาพแข็งแรง ไม่ปวดหลัง<br>
-                    ไม่ปวดคอ ไม่เป็นออฟฟิศซินโดรม<br>
-                    รวยๆ เฮงๆ นะจ๊ะ!<br><br>
+                    เก่งมากเลยนะที่ผ่านปีที่แล้วมาได้<br>
+                    ภูมิใจในตัวหนูเสมอนะ<br>
+                    ปีหน้ามาพยายามไปด้วยกันใหม่<br>
+                    เหนื่อยก็พัก ท้อก็มาเติมพลังที่พี่ได้<br><br>
                     
-                    รักนะจุ๊บๆ ❤️
+                    ขอให้สุขภาพแข็งแรง<br>
+                    กินอิ่ม นอนหลับ ฝันดีทุกคืน<br>
+                    รวยๆ เฮงๆ สวยวันสวยคืนเพี้ยง! ✨<br><br>
+                    
+                    รักที่สุดในโลกเลย! 🧸💕
                 </p>
 
-                <img src="https://media.giphy.com/media/zhS4PEVVuFfithFEhm/giphy.gif">
+                <img src="https://media.giphy.com/media/U4LhzzpfTP7NZ4UlmH/giphy.gif">
                 
-                <br><br><br>
-                <p style="font-size: 14px; color: #777;">(จบจดหมายแล้วจ้า)</p>
+                <br><br>
+                <p style="font-size: 14px; color: #ff9a9e;">(ปล่อยมือเพื่อเก็บการ์ดจ้า)</p>
             </div>
         </div>
     </div>
 
     <div class="privacy-cover" id="cover"></div>
 
-    <div class="hold-btn" id="btn">กดค้าง</div>
-    <div class="hint-text">กดค้างไว้อ่านจดหมาย</div>
+    <div class="hold-btn" id="btn">กดค้าง<br>รับพร ✨</div>
+    <div class="hint-text">จิ้มค้างไว้เลยจ้าาา</div>
 
     <audio id="bgMusic" loop preload="auto">
         <source src="https://ia800305.us.archive.org/34/items/AuldLangSyne_92/AuldLangSyne.mp3" type="audio/mpeg">
@@ -198,37 +236,27 @@
         const scrollText = document.getElementById('scrollText');
         const hint = document.querySelector('.hint-text');
 
-        // ฟังก์ชันเริ่ม (Show)
         function show() {
             content.style.opacity = '1';
-            content.style.transform = 'scale(1)';
+            content.style.transform = 'scale(1) translateY(0)';
             cover.style.opacity = '0';
             hint.style.opacity = '0';
-            btn.style.transform = 'scale(1.2)';
-            btn.style.opacity = '0.3'; // ทำให้ปุ่มจางลง
+            btn.style.transform = 'scale(0.9)'; // ปุ่มเล็กลงตอนกด
+            btn.style.opacity = '0.5';
 
-            // เล่นเพลง (สำหรับ Android)
             var playPromise = music.play();
             if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    // เล่นได้ปกติ
-                })
-                .catch(error => {
-                    console.log("Audio Error:", error);
-                    // ถ้าเล่นไม่ได้ (อาจเพราะเน็ตช้า) ก็ปล่อยผ่านไปก่อน
-                });
+                playPromise.catch(error => { console.log("Audio Error:", error); });
             }
 
-            // เริ่มเลื่อนข้อความ
             scrollText.classList.remove('animating'); 
-            void scrollText.offsetWidth; // รีเซ็ต Animation
+            void scrollText.offsetWidth;
             scrollText.classList.add('animating');
         }
 
-        // ฟังก์ชันหยุด (Hide)
         function hide() {
             content.style.opacity = '0';
-            content.style.transform = 'scale(0.95)';
+            content.style.transform = 'scale(0.95) translateY(20px)';
             cover.style.opacity = '1';
             hint.style.opacity = '1';
             btn.style.transform = 'scale(1)';
@@ -238,27 +266,16 @@
             scrollText.classList.remove('animating');
         }
 
-        // --- Event Listeners สำหรับ Android (Touch) ---
-        btn.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // ป้องกันเมนูคลิกขวาเด้งบน Android
-            show();
-        });
+        // Android Touch Events
+        btn.addEventListener('touchstart', (e) => { e.preventDefault(); show(); });
+        btn.addEventListener('touchend', (e) => { e.preventDefault(); hide(); });
+        btn.addEventListener('touchcancel', (e) => { hide(); });
 
-        btn.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            hide();
-        });
-
-        btn.addEventListener('touchcancel', (e) => {
-            hide();
-        });
-
-        // --- Event Listeners สำหรับ PC (Mouse) ---
+        // Mouse Events
         btn.addEventListener('mousedown', show);
         btn.addEventListener('mouseup', hide);
         btn.addEventListener('mouseleave', hide);
 
-        // ป้องกันการก๊อปปี้
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
